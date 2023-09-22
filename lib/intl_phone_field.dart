@@ -390,7 +390,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       showCursor: widget.showCursor,
       onFieldSubmitted: widget.onSubmitted,
       decoration: widget.decoration.copyWith(
-        prefixIcon: _buildFlagsButton(),
+        suffixIcon: _buildFlagsButton(),
         counterText: !widget.enabled ? '' : null,
       ),
       style: widget.style,
@@ -454,25 +454,6 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                 const SizedBox(
                   width: 4,
                 ),
-                if (widget.enabled &&
-                    widget.showDropdownIcon &&
-                    widget.dropdownIconPosition == IconPosition.leading) ...[
-                  widget.dropdownIcon,
-                  const SizedBox(width: 4),
-                ],
-                if (widget.showCountryFlag) ...[
-                  kIsWeb
-                      ? Image.asset(
-                          'assets/flags/${_selectedCountry.code.toLowerCase()}.png',
-                          package: 'intl_phone_field',
-                          width: 32,
-                        )
-                      : Text(
-                          _selectedCountry.flag,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                  const SizedBox(width: 8),
-                ],
                 FittedBox(
                   child: Text(
                     '+${_selectedCountry.dialCode}',
